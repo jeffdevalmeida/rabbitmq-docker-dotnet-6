@@ -1,0 +1,18 @@
+version: '3.4'
+
+services:
+  rabbitmq.sample:
+    image: ${DOCKER_REGISTRY-}rabbitmqsample
+    build:
+      context: .
+      dockerfile: RabbitMQ.Sample/Dockerfile
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    hostname: rabbitmq
+    container_name: rabbitmq-server
+    ports:
+    - 15672:15672
+    - 15671:15671
+    - 5672:5672
+    - 5671:5671
